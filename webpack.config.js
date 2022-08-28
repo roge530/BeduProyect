@@ -15,7 +15,16 @@ module.exports={
             title: 'Webpack App',
             filename:'index.html',
             template:'./index.html'
-        })
+        }),
+        new HtmlWebpackPlugin ({
+          filename:'test.html',
+          template:'./test.html'
+        }),
+        new HtmlWebpackPlugin ({
+          filename:'test.html',
+          template:'./test.html'
+      })
+
     ],
     //Style config 
     
