@@ -1,8 +1,38 @@
 body {
     background-color: black;
 }
-h1 {
+h1, p {
     font-family: 'Times New Roman', Times, serif;
     font-size: large;
     color:antiquewhite;
+}
+
+#areas {
+    display: flex;
+    flex-flow: row wrap;
+    flex-direction: row;
+    justify-content:space-around;
+    width: 60%;
+    margin: auto;
+    background-color: yellow;
+    flex: 3;
+}
+
+#areas div {
+    width: 28%;
+    background-color: red;
+}
+
+#areas div p {
+    text-align: center;
+}
+
+#areas div:hover {
+    background-color: blue;
+}
+
+@media screen and (min-width: 2560px) {
+    #areas {
+        width: 50%;
+    }
 }
