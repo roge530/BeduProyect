@@ -1,10 +1,22 @@
+:root{
+    --theme-color:white; 
+    --primary-color:#124f88;
+    --secondary-color:#f7c331;
+    --text-color-inverse:white;
+    --text-color:black;
+    --navbar-shallow-color:#e5e5e5;
+    --menu-mobile-background-color:#3a4460;
+    
+ 
+ }
+
 body {
-    background-color: black;
+    background-color: var(--theme-color);
 }
 h1 {
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: large;
-    color:antiquewhite;
+    color: var(--text-color);
 }
 p{
     color:antiquewhite;
@@ -13,3 +25,13 @@ p{
 a{
     color:antiquewhite;
 }
+
+ .searchPlaceholder img {
+    width: 100%;
+    margin-bottom: 50px;
+} 
+
+/* .test{
+    height: 600px;
+    background-color: #124f88;
+} */

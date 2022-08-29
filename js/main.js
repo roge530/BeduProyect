@@ -1,8 +1,8 @@
 import css from "../css/style.css";
-import image2 from '../assets/jk.PNG';
+import image1 from '../assets/web_image_01.jpg';
 
-const imageTest= document.getElementById('roxi');
-imageTest.src=image2;
+const imagePlaceholder= document.getElementById('imageHolder');
+imagePlaceholder.src=image1;
 
 const p = document.createElement('p');
     p.textContent = 'Hola rox bonita';
