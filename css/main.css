@@ -31,6 +31,10 @@ h1, p {
     background-color: blue;
 }
 
+#areasSection button{
+    margin-left: 20%;
+}
+
 @media screen and (min-width: 2560px) {
     #areas {
         width: 50%;
