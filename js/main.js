@@ -1,5 +1,6 @@
 var areas = []
 var allOpened = false
+var categories = []
 
 function fnSaludar() {
     console.log('hola')
@@ -62,3 +63,28 @@ function fnPrintAllAreas() {
         document.getElementById('buttonHidde').removeAttribute('hidden')
     }
 }
+
+function fnAllCategories() {
+    getDataFromApi('https://www.themealdb.com/api/json/v1/1/list.php?c=list')
+    .then(data => {
+        categories = data['meals'].map(datum => {
+            return datum['strCategory']
+        })
+        fnPrintAllCategories()
+    })
+}
+
+function fnPrintAllCategories() {
+    let fragment = new DocumentFragment()
+    categories.forEach(category => {
+        let div = document.createElement('div')
+        div.setAttribute("id", category)
+        div.setAttribute("onclick", "fnSaludar()")
+        div.innerHTML = '<p>'+category+'</p>'
+        fragment.appendChild(div)
+    })
+    let divCategories = document.querySelector('#categories')
+    divCategories.appendChild(fragment)
+}
+
+fnAllCategories()

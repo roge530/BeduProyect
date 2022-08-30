@@ -7,15 +7,13 @@ h1, p {
     color:antiquewhite;
 }
 
-#areas {
+#areas, #categories {
     display: flex;
     flex-flow: row wrap;
     flex-direction: row;
     justify-content:space-around;
     width: 60%;
     margin: auto;
-    background-color: yellow;
-    flex: 3;
 }
 
 #areas div {
@@ -27,12 +25,17 @@ h1, p {
     text-align: center;
 }
 
-#areas div:hover {
-    background-color: blue;
+#areas div:hover, #categories div:hover {
+    background-color:blue;
+    opacity: 0.4;
 }
 
 #areasSection button{
     margin-left: 20%;
+}
+
+#categories div {
+    width: 40%;
 }
 
 @media screen and (min-width: 2560px) {
