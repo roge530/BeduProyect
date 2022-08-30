@@ -88,3 +88,88 @@ function fnPrintAllCategories() {
 }
 
 fnAllCategories()
+
+function fnAutocomplete(input) {
+    let currentFocus
+    input.addEventListener("input", e => {
+        let div, divMatchingElement, i, val = input.value
+        let url = 'https://www.themealdb.com/api/json/v1/1/search.php?s=' + val
+        let data = []
+        getDataFromApi(url)
+        .then(dataGetted => {
+            data = dataGetted['meals'].map(datum => {
+                return datum['strMeal']
+            })
+            
+            closeAllLists()
+            if (!val) return false
+            currentFocus = -1
+            div = document.createElement('div')
+            div.setAttribute('id', input.id + 'autocompleteList')
+            div.setAttribute("class", "autocompleteItems");
+            input.parentNode.appendChild(div)
+            data.forEach(datum => {
+                if (datum.substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+                    divMatchingElement = document.createElement('div')
+                    divMatchingElement.innerHTML = '<strong>' + datum.substr(0, val.length) + '</strong>'
+                    divMatchingElement.innerHTML += datum.substr(val.length)
+                    divMatchingElement.innerHTML += "<input id="+datum.replace(/\s/g, "")+" type='hidden' value='" + datum + "'>" 
+                    divMatchingElement.addEventListener('click', e => {
+                        input.value = document.getElementById(datum.replace(/\s/g, "")).value
+                        closeAllLists()
+                    });
+                    div.appendChild(divMatchingElement)
+                }
+            });
+
+            input.addEventListener('keydown', e => {
+                let autocompleteList = document.getElementById(input.id + 'autocompleteList')
+                if (autocompleteList) autocompleteList = autocompleteList.getElementsByTagName("div")
+                switch (e.keyCode) {
+                    case 40:
+                        currentFocus++
+                        addActive(autocompleteList)
+                        break;
+                    case 38:
+                        currentFocus--
+                        addActive(autocompleteList)
+                        break;
+                    case 13:
+                        e.preventDefault()
+                        if (currentFocus > -1) {
+                            if (autocompleteList) autocompleteList[currentFocus].click();
+                        }
+                }
+            });
+            
+            function addActive(x) {
+                if (!x) return false
+                removeActive(x)
+                if (currentFocus >= x.length) currentFocus = 0
+                if (currentFocus < 0) currentFocus = (x.length - 1)
+                x[currentFocus].classList.add("autocompleteActive")
+            }
+            function removeActive(x) {
+                for (var i = 0; i < x.length; i++) {
+                    x[i].classList.remove("autocompleteActive");
+                }
+            }
+    
+            function closeAllLists(elmnt) {
+                var x = document.getElementsByClassName("autocompleteItems")
+
+                for (var i = 0; i < x.length; i++) {
+                    if (elmnt != x[i] && elmnt != input) {
+                        x[i].parentNode.removeChild(x[i])
+                    }
+                }
+            }
+    
+            document.addEventListener("click", e => {
+                closeAllLists(e.target)
+            });
+        });
+    });
+}
+
+fnAutocomplete(document.getElementById('myInput'))
