@@ -55,7 +55,7 @@ input[type=text] {
     width: 150%;
 }
 
-button[type=submit] {
+button[type=button] {
     background-color: DodgerBlue;
     color: #fff;
     margin-left: 10%;

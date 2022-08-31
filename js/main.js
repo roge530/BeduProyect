@@ -94,13 +94,8 @@ function fnAutocomplete(input) {
     input.addEventListener("input", e => {
         let div, divMatchingElement, i, val = input.value
         let url = 'https://www.themealdb.com/api/json/v1/1/search.php?s=' + val
-        let data = []
         getDataFromApi(url)
-        .then(dataGetted => {
-            data = dataGetted['meals'].map(datum => {
-                return datum['strMeal']
-            })
-            
+        .then(data => {
             closeAllLists()
             if (!val) return false
             currentFocus = -1
@@ -108,14 +103,18 @@ function fnAutocomplete(input) {
             div.setAttribute('id', input.id + 'autocompleteList')
             div.setAttribute("class", "autocompleteItems");
             input.parentNode.appendChild(div)
-            data.forEach(datum => {
-                if (datum.substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+            data['meals'].forEach(datum => {
+                let mealName = datum['strMeal']
+                let mealID = datum['idMeal']
+                if (mealName.substr(0, val.length).toUpperCase() == val.toUpperCase()) {
                     divMatchingElement = document.createElement('div')
-                    divMatchingElement.innerHTML = '<strong>' + datum.substr(0, val.length) + '</strong>'
-                    divMatchingElement.innerHTML += datum.substr(val.length)
-                    divMatchingElement.innerHTML += "<input id="+datum.replace(/\s/g, "")+" type='hidden' value='" + datum + "'>" 
+                    divMatchingElement.innerHTML = '<strong>' + mealName.substr(0, val.length) + '</strong>'
+                    divMatchingElement.innerHTML += mealName.substr(val.length)
+                    divMatchingElement.innerHTML += "<input id="+mealName.replace(/\s/g, "")+" type='hidden' value='" + mealName + "' class="+ mealID +">" 
                     divMatchingElement.addEventListener('click', e => {
-                        input.value = document.getElementById(datum.replace(/\s/g, "")).value
+                        let selectedInput = document.getElementById(mealName.replace(/\s/g, ""))
+                        input.value = selectedInput.value
+                        input.className = selectedInput.className
                         closeAllLists()
                     });
                     div.appendChild(divMatchingElement)
@@ -173,3 +172,8 @@ function fnAutocomplete(input) {
 }
 
 fnAutocomplete(document.getElementById('myInput'))
+
+function fnSearch() {
+    let recipe = (document.getElementById('myInput'))
+    console.log(recipe.className)
+}
