@@ -28,7 +28,7 @@ a{
 
 .test{
     height: 35rem;
-    background: url('/assets/web_image_01.jpg') no-repeat center center fixed;
+    background: url('/assets/web_image_01.jpg') no-repeat center center ;
     -webkit-background-size:contain;
     -moz-background-size:contain;
     -o-background-size:contain;
@@ -40,4 +40,18 @@ a{
     width: 50%;
 }
 
+footer{
+   
+    margin-top: 20%;
+    width: 100%;
+    height: 15rem;
+    background: url('/assets/footer_03_04.jpg') no-repeat center center;
+    -webkit-background-size:contain;
+    -moz-background-size:contain;
+    -o-background-size:contain;
+    background-size:contain;
+    background-position: bottom;  
+    background-color: #782e32;
+    
+}
 

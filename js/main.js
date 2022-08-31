@@ -1,6 +1,6 @@
 import css from "../css/style.css";
 import image1 from '../assets/web_image_01.jpg';
-import image2 from '../assets/footer_2_04.jpg';
+import image2 from '../assets/footer_03_04.jpg';
 
 const footerImgholder = document.getElementById('footerImgholder');
 const imagePlaceholder = document.getElementById('imageHolder');
