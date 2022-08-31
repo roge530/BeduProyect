@@ -175,5 +175,7 @@ fnAutocomplete(document.getElementById('myInput'))
 
 function fnSearch() {
     let recipe = (document.getElementById('myInput'))
-    console.log(recipe.className)
+    window.localStorage.setItem('demo', recipe.className)
+    window.localStorage.setItem('method', 'Search Bar')
+    window.location = '/html/demo.html'
 }
