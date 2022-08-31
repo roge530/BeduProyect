@@ -26,12 +26,18 @@ a{
     color:antiquewhite;
 }
 
- .searchPlaceholder img {
-    width: 100%;
-    margin-bottom: 50px;
-} 
+.test{
+    height: 35rem;
+    background: url('/assets/web_image_01.jpg') no-repeat center center fixed;
+    -webkit-background-size:contain;
+    -moz-background-size:contain;
+    -o-background-size:contain;
+    background-size:contain;
+    background-position: 0 0;  
+}
 
-/* .test{
-    height: 600px;
-    background-color: #124f88;
-} */
+.test2{
+    width: 50%;
+}
+
+
