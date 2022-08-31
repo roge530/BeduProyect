@@ -103,7 +103,7 @@ function fnAutocomplete(input) {
             div = document.createElement('div')
             div.setAttribute('id', input.id + 'autocompleteList')
             div.setAttribute("class", "autocompleteItems");
-            input.parentNode.appendChild(div)
+            document.getElementById('divForm').appendChild(div);
             data['meals'].forEach(datum => {
                 let mealName = datum['strMeal']
                 let mealID = datum['idMeal']
@@ -115,7 +115,7 @@ function fnAutocomplete(input) {
                     divMatchingElement.addEventListener('click', e => {
                         let selectedInput = document.getElementById(mealName.replace(/\s/g, ""))
                         input.value = selectedInput.value
-                        input.className = selectedInput.className
+                        window.localStorage.setItem('idMeal',selectedInput.className)
                         closeAllLists()
                     });
                     div.appendChild(divMatchingElement)
@@ -175,8 +175,8 @@ function fnAutocomplete(input) {
 fnAutocomplete(document.getElementById('myInput'))
 
 function fnSearch() {
-    let recipe = (document.getElementById('myInput'))
-    window.localStorage.setItem('demo', recipe.className)
+    let idMeal = window.localStorage.getItem('idMeal')
+    window.localStorage.setItem('demo', idMeal)
     window.localStorage.setItem('method', 'Search Bar')
     window.location = '/html/demo.html'
 }
