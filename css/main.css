@@ -39,10 +39,7 @@ h1, p {
     width: 40%;
 }
 
-.autocomplete {
-    position: relative;
-    display: inline-block;
-}
+
 
 input {
     border: 1px solid transparent;
@@ -58,14 +55,15 @@ input[type=text] {
 button[type=button] {
     background-color: DodgerBlue;
     color: #fff;
-    margin-left: 10%;
+}
+
+form {
+    margin-left: 15%;
 }
 
 form div {
     display: flex;
-    flex-flow: row wrap;
     flex-direction: row;
-    margin-left: 15%;
     height: auto;
 }
 
@@ -77,6 +75,7 @@ form div {
     z-index: 99;
     background-color: white;
     flex-direction: column;
+
 }
 
 .autocompleteItems div {

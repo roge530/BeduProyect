@@ -102,7 +102,7 @@ function fnAutocomplete(input) {
             div = document.createElement('div')
             div.setAttribute('id', input.id + 'autocompleteList')
             div.setAttribute("class", "autocompleteItems");
-            input.parentNode.appendChild(div)
+            document.getElementById('divForm').appendChild(div)
             data['meals'].forEach(datum => {
                 let mealName = datum['strMeal']
                 let mealID = datum['idMeal']
