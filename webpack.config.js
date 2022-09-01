@@ -9,6 +9,13 @@ module.exports={
         path:path.resolve(__dirname,'dist'),
         filename: '[name].js'
     },
+    entry:{
+        bundle:'./js/recipe.js'
+    },
+    output:{
+        path:path.resolve(__dirname,'dist'),
+        filename: '[name].js'
+    },
 
     plugins:[
         new HtmlWebpackPlugin ({
@@ -17,8 +24,8 @@ module.exports={
             template:'./index.html'
         }),
         new HtmlWebpackPlugin ({
-          filename:'test.html',
-          template:'./test.html'
+          filename:'demo.html',
+          template:'./html/demo.html'
         }),
         new HtmlWebpackPlugin ({
           filename:'test.html',

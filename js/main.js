@@ -1,4 +1,4 @@
-import css from "../css/style.css";
+
 var areas = []
 var allOpened = false
 var categories = []

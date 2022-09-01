@@ -1,0 +1,23 @@
+@import './style.css';
+/* body{
+    background-color: var(--recipies-theme-color);
+} */
+.contanier{
+    background-color: brown;
+}
+#col1{
+    background-color: blueviolet;
+    
+}
+
+#col2{
+    background-color:firebrick;
+}
+
+#col3{
+    background-color:aliceblue;
+}
+
+#col4{
+    background-color:yellowgreen;
+}
