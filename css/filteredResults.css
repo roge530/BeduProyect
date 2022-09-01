@@ -1,0 +1,20 @@
+#results {
+    display: flex;
+    flex-flow: wrap;
+}
+
+#results > div{
+    border: 1px solid #aeaeae;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+img {
+    width: 20%;
+    padding: 0 auto;
+}
+
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2rem;
+}

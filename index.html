@@ -7,11 +7,37 @@
     <title>THE RECIPE BOOK</title>
     <link rel="stylesheet" href="/css/style.css">
     <link rel="shortcut icon" href="#">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     
     <h1>Hola mundo</h1>
-    <img id="roxi" alt="">
-    <script type="text/javascript" src="/js/main.js"></script> 
+    <form autocomplete="off">
+        <div>
+            <div class="autocomplete">
+              <input id="myInput" type="text" name="mySearchBar" placeholder="Food">
+            </div>
+            <button type="button" onclick="fnSearch()"><i class="fa fa-search"></i></button>
+            
+        </div>
+    </form>
+    <button id="randomRecipe" onclick="fnGetRandomRecipe()">Random recipe</button>
+
+    <section id="areasSection">
+        <div id="areas">
+            <div id="Canadian" onclick="fnShowFilteredResults('Canadian', 'Area Filter')">
+                <p>Canadian</p>
+            </div>
+            <div id="Mexican" onclick="fnShowFilteredResults('Mexican', 'Area Filter')">
+                <p>Mexican</p>
+            </div>
+            <div id="allAreas" onclick="fnPrintAllAreas()">
+                <p>Ver todos</p>
+            </div>
+        </div>
+    </section>
+    <div id="categories">
+    </div>
+    <script type="text/javascript" src="/js/main.js"></script>
 </body>
 </html>
