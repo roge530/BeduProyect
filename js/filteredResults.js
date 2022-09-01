@@ -24,11 +24,13 @@ function fnFilteredRecipes (){
         recipes.forEach(recipe => {
             let div = document.createElement('div')
             let img = document.createElement('img')
-            div.innerHTML = '<h1>' + recipe.strMeal + '</h1>'
+            let h1 = document.createElement('h1')
+            h1.textContent = recipe.strMeal
             img.setAttribute("src", recipe.strMealThumb)
             img.setAttribute("alt", recipe.strMeal)
             div.setAttribute("onclick", "fnSaludar(\'" +recipe.idMeal+ "\', 'Search Bar')")
             div.appendChild(img)
+            div.appendChild(h1)
             div.setAttribute("id", recipe.idMeal)
             fragment.appendChild(div)
         }
