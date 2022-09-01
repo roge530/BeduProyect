@@ -2,8 +2,13 @@ var areas = []
 var allOpened = false
 var categories = []
 
-function fnSaludar() {
-    console.log('hola')
+function fnShowFilteredResults(area, method) {
+    //console.log('hola')
+    console.log(area)
+
+    window.localStorage.setItem('method', method)
+    window.localStorage.setItem('demo', area)
+    window.location = '/html/filteredResults.html'
 }
 
 function getDataFromApi(urlApi) {
@@ -41,7 +46,7 @@ function fnPrintAllAreas() {
         areas.forEach(area => {
             let div = document.createElement('div')
             div.setAttribute("id", area)
-            div.setAttribute("onclick", "fnSaludar()")
+            div.setAttribute("onclick", "fnShowFilteredResults(\'" +area+ "\', 'Area Filter')")
             div.innerHTML = '<p>'+area+'</p>'
             fragment.appendChild(div)
         })
@@ -79,7 +84,7 @@ function fnPrintAllCategories() {
     categories.forEach(category => {
         let div = document.createElement('div')
         div.setAttribute("id", category)
-        div.setAttribute("onclick", "fnSaludar()")
+        div.setAttribute("onclick", "fnShowFilteredResults(\'" +category+ "\', 'Category Filter')")
         div.innerHTML = '<p>'+category+'</p>'
         fragment.appendChild(div)
     })
@@ -178,4 +183,18 @@ function fnSearch() {
     window.localStorage.setItem('demo', recipe.className)
     window.localStorage.setItem('method', 'Search Bar')
     window.location = '/html/demo.html'
+}
+
+function fnGetRandomRecipe() {
+    getDataFromApi('https://www.themealdb.com/api/json/v1/1/random.php')
+    .then(data => {
+            window.localStorage.setItem('method', 'Random Recipe')
+            window.localStorage.setItem('demo', data['meals'][0]['idMeal'])
+            window.location = '/html/demo.html'
+            console.log(data['meals'][0]['idMeal'])
+        })
+}
+
+function fnGetRecipesByArea () {
+    
 }

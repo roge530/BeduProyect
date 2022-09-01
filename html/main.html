@@ -17,16 +17,18 @@
               <input id="myInput" type="text" name="mySearchBar" placeholder="Food">
             </div>
             <button type="button" onclick="fnSearch()"><i class="fa fa-search"></i></button>
+            
         </div>
     </form>
+    <button id="randomRecipe" onclick="fnGetRandomRecipe()">Random recipe</button>
 
     <section id="areasSection">
         <div id="areas">
-            <div id="canada" onclick="fnSaludar()">
-                <p>Canada</p>
+            <div id="Canadian" onclick="fnShowFilteredResults('Canadian', 'Area Filter')">
+                <p>Canadian</p>
             </div>
-            <div id="mexico" onclick="fnSaludar()">
-                <p>Mexico</p>
+            <div id="Mexican" onclick="fnShowFilteredResults('Mexican', 'Area Filter')">
+                <p>Mexican</p>
             </div>
             <div id="allAreas" onclick="fnPrintAllAreas()">
                 <p>Ver todos</p>
