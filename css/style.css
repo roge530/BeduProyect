@@ -18,6 +18,11 @@ body {
     text-align: center;
 }
 
+.navbar-expand-lg {
+    justify-content: center;
+    background-color: rgba(174, 39, 47, 0.6);
+}
+
 button[type=button] {
     background-color: DodgerBlue;
     color: #fff;
@@ -153,11 +158,11 @@ footer div div {
     align-content: center;
 }
 
-.card {
+#cards .card {
     max-width: 30%;
 }
 
-.card-body {
+.onFooter {
     flex-direction: column;
 }
 
