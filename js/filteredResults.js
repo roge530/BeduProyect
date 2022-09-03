@@ -17,8 +17,12 @@ function fnFilteredRecipes (){
     if(window.localStorage.getItem('method') === 'Area Filter'){
         url = "https://www.themealdb.com/api/json/v1/1/filter.php?a="
     }
-    if(window.localStorage.getItem('method') === 'Category Filter'){
+    else if(window.localStorage.getItem('method') === 'Category Filter'){
         url = "https://www.themealdb.com/api/json/v1/1/filter.php?c="
+    }
+    else {
+        h1.textContent = ""
+        window.location = '/html/index.html'
     }
     getDataFromApi(url + window.localStorage.getItem('demo'))
     .then(data => {
