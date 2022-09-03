@@ -1,12 +1,15 @@
-//import css from "../css/style.css";
+import css from "../css/style.css";
+import foto from '../assets/IMG_3903.jpeg'
+import githubIcon from '../assets/github-2.svg'
+import filteredResults from './filteredResults.js'
 var areas = []
 var allOpened = false
 var categories = []
 
-function fnShowFilteredResults(area, method) {
+window.fnShowFilteredResults = function fnShowFilteredResults(area, method) {
     window.localStorage.setItem('method', method)
     window.localStorage.setItem('demo', area)
-    window.location = '/html/filteredResults.html'
+    window.location = '/filteredResults.html'
 }
 
 function getDataFromApi(urlApi) {
@@ -26,7 +29,7 @@ function fnAllAreas() {
 }
 fnAllAreas()
 
-function fnHideAreas() {
+window.fnHideAreas = function fnHideAreas() {
     document.getElementById('allAreas').removeAttribute('hidden')
     areas.forEach(area => {
         document.getElementById(area).setAttribute('hidden', true)
@@ -35,7 +38,7 @@ function fnHideAreas() {
 }
 
 
-function fnPrintAllAreas() {
+window.fnPrintAllAreas = function fnPrintAllAreas() {
     if (!allOpened) {
         let fragment = new DocumentFragment()
         areas = areas.filter(area => area != 'Mexican')
@@ -180,14 +183,14 @@ function fnAutocomplete(input) {
 
 fnAutocomplete(document.getElementById('myInput'))
 
-function fnSearch() {
+window.fnSearch = function fnSearch() {
     let idMeal = window.localStorage.getItem('idMeal')
     window.localStorage.setItem('demo', idMeal)
     window.localStorage.setItem('method', 'Search Bar')
     window.location = '/html/demo.html'
 }
 
-function fnGetRandomRecipe() {
+window.fnGetRandomRecipe = function fnGetRandomRecipe() {
     getDataFromApi('https://www.themealdb.com/api/json/v1/1/random.php')
     .then(data => {
             window.localStorage.setItem('method', 'Random Recipe')
@@ -195,3 +198,5 @@ function fnGetRandomRecipe() {
             window.location = '/html/demo.html'
         })
 }
+document.getElementById('cardRoge').setAttribute('src',foto)
+document.getElementById('githubIcon').setAttribute('src',githubIcon)
