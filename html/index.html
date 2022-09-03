@@ -11,12 +11,13 @@
     <link rel="shortcut icon" href="#">
     <title>THE RECIPE BOOK</title>
 </head>
-<body>
 
+<body>
     <main>
         <div class="searchPlaceholder row justify-content-center">
             <div class="col-8 test d-flex align-items-center  justify-content-center">
-                <div class="input-group mb-3 test2">
+                <div class="input-group mb-4 test2">
+                    <button id="randomRecipe" class="btn btn-secondary btn-sm" onclick="fnGetRandomRecipe()">Random recipe</button> 
                     <form autocomplete="off" id="divForm">
                         <div>
                             <div class="autocomplete">
@@ -24,14 +25,14 @@
                               <button type="button" onclick="fnSearch()"><i class="fa fa-search"></i></button>
                             </div>
                         </div>
-                    </form>
-                    <button id="randomRecipe" onclick="fnGetRandomRecipe()">Random recipe</button>
+                    </form> 
                 </div>
             </div> 
         </div>
     </main>
 
     <section id="areasSection">
+        <h1>Regional recipes</h1>
         <div id="areas">
             <div id="Canadian" onclick="fnShowFilteredResults('Canadian', 'Area Filter')">
                 <p>Canadian</p>
@@ -40,11 +41,14 @@
                 <p>Mexican</p>
             </div>
             <div id="allAreas" onclick="fnPrintAllAreas()">
-                <p>Ver todos</p>
+                <p>See all</p>
             </div>
         </div>
     </section>
-    <div id="categories">
+    <div id="allCategories">
+        <h1>Categories</h1>
+        <div id="categories">
+        </div>
     </div>
     <script type="text/javascript" src="/js/main.js"></script>
 </body>
@@ -52,6 +56,54 @@
 <footer>
    <div>
         <h2> ABOUT US</h2>
+        <div>
+            <p>This project is made for Bedu web programming course phase 2</p>
+            <p>All the code is in the github repositorie <a href="https://github.com/roge530/BeduProyect" target="_blank"><img src="/assets/github-2.svg" class="icon"></a></p>
+            <p>Our team use Zenhub Kanban board</p>
+        </div>
+        <div id="cards">    
+            <div class="card text-white bg-danger mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                      <img src="/assets/IMG_3903.jpeg" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body" style="flex-direction: column">
+                        <h5 class="card-title">Rogelio Contreras González</h5>
+                        <p class="card-text">Full stack dev, DevOps specialist and game developer</p>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card text-white bg-danger mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                      <img src="..." class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title">Claudia Roxana Jimenez Montiel</h5>
+                        <p class="card-text">Mechatronics engineer</p>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card text-white bg-danger mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                      <img src="..." class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body" style="flex-direction: column">
+                        <h5 class="card-title">Omar Ontiveros Rios</h5>
+                        <p class="card-text">Data analyst</p>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
    </div>
 </footer>
 </html>

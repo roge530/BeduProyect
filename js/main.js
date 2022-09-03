@@ -81,9 +81,13 @@ function fnPrintAllCategories() {
     let fragment = new DocumentFragment()
     categories.forEach(category => {
         let div = document.createElement('div')
+        let divBody = document.createElement('div')
         div.setAttribute("id", category)
+        div.setAttribute('class', 'card')
         div.setAttribute("onclick", "fnShowFilteredResults(\'" +category+ "\', 'Category Filter')")
-        div.innerHTML = '<p>'+category+'</p>'
+        divBody.setAttribute('class', 'card-body')
+        divBody.innerHTML = '<p class="card-text">'+category+'</p>'
+        div.appendChild(divBody)
         fragment.appendChild(div)
     })
     let divCategories = document.querySelector('#categories')
