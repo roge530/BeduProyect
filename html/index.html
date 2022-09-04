@@ -18,12 +18,12 @@
         <div class="searchPlaceholder row justify-content-center">
             <div class="col-8 test d-flex align-items-center  justify-content-center">
                 <div class="input-group mb-4 test2">
-                    <button id="randomRecipe" class="btn btn-secondary btn-sm" onclick="fnGetRandomRecipe()">Random recipe</button> 
+                    <button id="randomRecipe" class="btn btn-secondary btn-sm"  >Random recipe</button> 
                     <form autocomplete="off" id="divForm">
                         <div>
                             <div class="autocomplete">
                               <input class="form-control" id="myInput" type="text" name="mySearchBar" placeholder="Food">
-                              <button type="button" onclick="fnSearch()"><i class="fa fa-search"></i></button>
+                              <button id="searchButton" type="button"><i class="fa fa-search"></i></button>
                             </div>
                         </div>
                     </form> 
@@ -35,13 +35,13 @@
     <section id="areasSection">
         <h1>Regional recipes</h1>
         <div id="areas">
-            <div id="Canadian" onclick="fnShowFilteredResults('Canadian', 'Area Filter')">
+            <!-- <div id="Canadian" onclick="fnShowFilteredResults('Canadian', 'Area Filter')">
                 <p>Canadian</p>
             </div>
             <div id="Mexican" onclick="fnShowFilteredResults('Mexican', 'Area Filter')">
                 <p>Mexican</p>
-            </div>
-            <div id="allAreas" onclick="fnPrintAllAreas()">
+            </div> -->
+            <div id="allAreas">
                 <p>See all</p>
             </div>
         </div>
@@ -51,7 +51,7 @@
         <div id="categories">
         </div>
     </div>
-    <script type="text/javascript" src="/js/main.js"></script>
+    <script src="/js/main.js"></script>
 </body>
 
 <footer>
