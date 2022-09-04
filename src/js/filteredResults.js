@@ -1,4 +1,10 @@
+import '../css/filteredResults.css'
+import rbLogo from '/src/assets/icon.png'
 var recipes = []
+
+//SETTING SRC ON IMAGES
+const logo = document.getElementById('rbLogo')
+logo.src = rbLogo
 
 function getDataFromApi(urlApi) {
     return fetch(urlApi)
@@ -22,7 +28,7 @@ function getDataFromApi(urlApi) {
     }
     else {
         h1.textContent = ""
-        window.location = '/src/html/index.html'
+        window.location = './index.html'
     }
     getDataFromApi(url + window.localStorage.getItem('demo'))
     .then(data => {
@@ -36,7 +42,10 @@ function getDataFromApi(urlApi) {
             h5.setAttribute("class", "text-center")
             img.setAttribute("src", recipe.strMealThumb)
             img.setAttribute("alt", recipe.strMeal)
-            div.setAttribute("onclick", "fnSaludar(\'" +recipe.idMeal+ "\', 'Search Bar')")
+            // div.setAttribute("onclick", "fnSaludar(\'" +recipe.idMeal+ "\', 'Search Bar')")
+            div.addEventListener("click", () => {
+                fnSaludar(recipe.idMeal, 'Search Bar')
+            })
             div.appendChild(img)
             div.appendChild(h5)
             div.setAttribute("id", recipe.idMeal)
@@ -53,7 +62,7 @@ fnFilteredRecipes()
 function fnSaludar(area, method) {
     window.localStorage.setItem('method', method)
     window.localStorage.setItem('demo', area)
-    window.location = '/src/html/demo.html'
+    window.location = './demo.html'
 }
 
 function fnGetRandomRecipe() {
@@ -61,6 +70,8 @@ function fnGetRandomRecipe() {
     .then(data => {
             window.localStorage.setItem('method', 'Random Recipe')
             window.localStorage.setItem('demo', data['meals'][0]['idMeal'])
-            window.location = '/src/html/demo.html'
+            window.location = './demo.html'
         })
 }
+
+document.getElementById('randomRecipe').addEventListener("click", fnGetRandomRecipe)

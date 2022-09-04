@@ -1,7 +1,24 @@
-//import css from "../css/style.css";
+import '../css/style.css'
+import rogePhoto from '/src/assets/IMG_3903.jpeg'
+import omarPhoto from '/src/assets/omarPhoto.jpg'
+import roxiPhoto from '/src/assets/roxiPhoto.png'
+import ghLogo from '/src/assets/github-2.svg'
+
+
 var areas = []
 var allOpened = false
 var categories = []
+
+//SETTING SRC ON IMAGES
+const rogePic = document.getElementById('rogePhoto')
+const omarPic = document.getElementById('omarPhoto')
+const roxiPic= document.getElementById('roxiPhoto')
+const ghL = document.getElementById('ghIcon')
+rogePic.src = rogePhoto
+omarPic.src = omarPhoto
+roxiPic.src = roxiPhoto
+ghL.src = ghLogo
+
 
 fnAllAreas() //GETTING ALL THE AREAS FROM THE API
 fnAllCategories() //GETTING ALL THE CATEGORIES FROM THE API
@@ -14,7 +31,7 @@ const searchButton = document.getElementById('searchButton').addEventListener("c
  function fnShowFilteredResults(area, method) {
     window.localStorage.setItem('method', method)
     window.localStorage.setItem('demo', area)
-    window.location = '/src/html/filteredResults.html'
+    window.location = './filteredResults.html'
 }
 
  function getDataFromApi(urlApi) {
@@ -196,7 +213,7 @@ function fnPrintAllCategories() {
     let idMeal = window.localStorage.getItem('idMeal')
     window.localStorage.setItem('demo', idMeal)
     window.localStorage.setItem('method', 'Search Bar')
-    window.location = '/src/html/demo.html'
+    window.location = './demo.html'
 }
 
  export function fnGetRandomRecipe() {
@@ -204,7 +221,7 @@ function fnPrintAllCategories() {
     .then(data => {
             window.localStorage.setItem('method', 'Random Recipe')
             window.localStorage.setItem('demo', data['meals'][0]['idMeal'])
-            window.location = '/src/html/demo.html'
+            window.location = './demo.html'
         })
 }
 

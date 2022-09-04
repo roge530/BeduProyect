@@ -1,8 +1,16 @@
+import '../css/demo.css'
+import rbLogo from '/src/assets/icon.png'
+
+//SETTING SRC ON IMAGES
+const logo = document.getElementById('rbLogo')
+logo.src = rbLogo
+
+
 function fnSearch() {
     let recipe = (document.getElementById('myInput'))
     window.localStorage.setItem('demo', recipe.className)
     window.localStorage.setItem('method', 'Search Bar')
-    window.location = '/src/html/demo.html'
+    window.location = './demo.html'
 }
 
 const foodName= localStorage.getItem('demo')
