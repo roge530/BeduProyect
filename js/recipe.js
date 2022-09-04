@@ -44,9 +44,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
             const recipeImg=dataFilter(filteredArray,'strMealThumb')[0][1]
 
             //Get youtube video
+            try{ dataFilter(filteredArray,'strYoutube')
             const videoURL=dataFilter(filteredArray,'strYoutube')[0][1].replace("watch?v=","embed/")
-           
             videoDOM.setAttribute("src",`${videoURL}?controls=0`)
+        }catch{
+            videoDOM.setAttribute("alt",`Not available video`)
+            }
+            
 
             //DOM Render
             document.querySelector('#recipeImg').src=recipeImg
