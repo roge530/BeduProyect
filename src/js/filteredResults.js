@@ -1,8 +1,10 @@
-import css from "../css/filteredResults.css";
-import logo from '../assets/icon.png'
+import '../css/filteredResults.css'
+import rbLogo from '/src/assets/icon.png'
 var recipes = []
-var path = window.location.pathname;
-var page = path.split("/").pop();
+
+//SETTING SRC ON IMAGES
+const logo = document.getElementById('rbLogo')
+logo.src = rbLogo
 
 function getDataFromApi(urlApi) {
     return fetch(urlApi)
@@ -21,8 +23,12 @@ function fnFilteredRecipes (){
     if(window.localStorage.getItem('method') === 'Area Filter'){
         url = "https://www.themealdb.com/api/json/v1/1/filter.php?a="
     }
-    if(window.localStorage.getItem('method') === 'Category Filter'){
+    else if(window.localStorage.getItem('method') === 'Category Filter'){
         url = "https://www.themealdb.com/api/json/v1/1/filter.php?c="
+    }
+    else {
+        h1.textContent = ""
+        window.location = './index.html'
     }
     getDataFromApi(url + window.localStorage.getItem('demo'))
     .then(data => {
@@ -51,7 +57,7 @@ function fnFilteredRecipes (){
 window.fnGetRecipe = function fnGetRecipe(area, method) {
     window.localStorage.setItem('method', method)
     window.localStorage.setItem('demo', area)
-    window.location = '/recipe.html'
+    window.location = './recipe.html'
 }
 
 window.fnGetRandomRecipe = function fnGetRandomRecipe() {
@@ -59,8 +65,7 @@ window.fnGetRandomRecipe = function fnGetRandomRecipe() {
     .then(data => {
             window.localStorage.setItem('method', 'Random Recipe')
             window.localStorage.setItem('demo', data['meals'][0]['idMeal'])
-            window.location = '/recipe.html'
+            window.location = './recipe.html'
         })
 }
 fnFilteredRecipes()
-document.getElementById('logo').setAttribute('src',logo)

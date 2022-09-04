@@ -1,17 +1,28 @@
-import css from "../css/style.css";
-import foto from '../assets/IMG_3903.jpeg'
-import fotoRoxy from '../assets/Roxy.jpg'
-import githubIcon from '../assets/github-2.svg'
+import '../css/style.css'
+import rogePhoto from '/src/assets/IMG_3903.jpeg'
+import omarPhoto from '/src/assets/omarPhoto.jpg'
+import roxiPhoto from '/src/assets/Roxy.jpg'
+import ghLogo from '/src/assets/github-2.svg'
+
+
 var areas = []
 var allOpened = false
 var categories = []
-var path = window.location.pathname;
-var page = path.split("/").pop();
+
+//SETTING SRC ON IMAGES
+const rogePic = document.getElementById('cardRoge')
+const omarPic = document.getElementById('cardOmar')
+const roxiPic= document.getElementById('cardRoxy')
+const ghL = document.getElementById('githubIcon')
+rogePic.src = rogePhoto
+omarPic.src = omarPhoto
+roxiPic.src = roxiPhoto
+ghL.src = ghLogo
 
 window.fnShowFilteredResults = function fnShowFilteredResults(area, method) {
     window.localStorage.setItem('method', method)
     window.localStorage.setItem('demo', area)
-    window.location = '/filteredResults.html'
+    window.location = './filteredResults.html'
 }
 
 function getDataFromApi(urlApi) {
@@ -28,6 +39,7 @@ function fnAllAreas() {
                 return datum['strArea']
             })
         })
+    
 }
 
 
@@ -42,8 +54,6 @@ window.fnHideAreas = function fnHideAreas() {
 window.fnPrintAllAreas = function fnPrintAllAreas() {
     if (!allOpened) {
         let fragment = new DocumentFragment()
-        areas = areas.filter(area => area != 'Mexican')
-        areas = areas.filter(area => area != 'Canadian')
         document.getElementById('allAreas').setAttribute('hidden', true)
         areas.forEach(area => {
             let div = document.createElement('div')
@@ -180,12 +190,13 @@ function fnAutocomplete(input) {
     });
 }
 
+fnAutocomplete(document.getElementById('myInput'))
 
-window.fnSearch = function fnSearch() {
+ window.fnSearch = function fnSearch() {
     let idMeal = window.localStorage.getItem('idMeal')
     window.localStorage.setItem('demo', idMeal)
     window.localStorage.setItem('method', 'Search Bar')
-    window.location = '/recipe.html'
+    window.location = './recipe.html'
 }
 
 window.fnGetRandomRecipe = function fnGetRandomRecipe() {
@@ -193,13 +204,10 @@ window.fnGetRandomRecipe = function fnGetRandomRecipe() {
     .then(data => {
             window.localStorage.setItem('method', 'Random Recipe')
             window.localStorage.setItem('demo', data['meals'][0]['idMeal'])
-            window.location = '/recipe.html'
+            window.location = './recipe.html'
         })
 }
 
 fnAllCategories()
 fnAllAreas()
 fnAutocomplete(document.getElementById('myInput'))
-document.getElementById('cardRoge').setAttribute('src',foto)
-document.getElementById('githubIcon').setAttribute('src',githubIcon)
-document.getElementById('cardRoxy').setAttribute('src',fotoRoxy)

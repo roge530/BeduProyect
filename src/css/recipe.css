@@ -14,7 +14,7 @@ body{
 .item1 { grid-area: header; }
 .item2 { 
   grid-area: menu; 
-  background-image: url('/assets/mockup_pag2_01.jpg') ;
+  background-image: url('/src/assets/mockup_pag2_01.jpg');
   background-repeat: repeat-y;
   color: rgba(0,0,0,0);
 }
@@ -29,7 +29,7 @@ body{
 }
 .item7 {
   grid-area: space;
-  background-image: url('/assets/mockup_pag2_03.jpg') ;
+  background-image: url('/src/assets/mockup_pag2_03.jpg') ;
   background-repeat: repeat-y; 
   color: rgba(0,0,0,0);
 }
@@ -75,7 +75,7 @@ img{
 #ingredients{
     background: rgba(255, 255, 255, 0.3);
     
-    background-image: url('/assets/basket_ok.png');
+    background-image: url('/src/assets/basket_ok.png');
     background-size: 70%;
     background-position: right bottom;
     background-repeat: no-repeat;background-blend-mode: lighten;
@@ -121,9 +121,6 @@ iframe:focus {
     
 
   }
-.navbar {
-  height: 4%;
-}
 .navLogo {
-  width: 25px;
+  width: 50px;
 }
