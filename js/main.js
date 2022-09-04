@@ -184,7 +184,7 @@ window.fnSearch = function fnSearch() {
     let idMeal = window.localStorage.getItem('idMeal')
     window.localStorage.setItem('demo', idMeal)
     window.localStorage.setItem('method', 'Search Bar')
-    window.location = '/html/demo.html'
+    window.location = '/recipe.html'
 }
 
 window.fnGetRandomRecipe = function fnGetRandomRecipe() {
@@ -192,7 +192,7 @@ window.fnGetRandomRecipe = function fnGetRandomRecipe() {
     .then(data => {
             window.localStorage.setItem('method', 'Random Recipe')
             window.localStorage.setItem('demo', data['meals'][0]['idMeal'])
-            window.location = '/html/demo.html'
+            window.location = '/recipe.html'
         })
 }
 

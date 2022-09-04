@@ -1,4 +1,5 @@
 import css from "../css/filteredResults.css";
+import logo from '../assets/icon.png'
 var recipes = []
 var path = window.location.pathname;
 var page = path.split("/").pop();
@@ -35,7 +36,7 @@ function fnFilteredRecipes (){
             h5.setAttribute("class", "text-center")
             img.setAttribute("src", recipe.strMealThumb)
             img.setAttribute("alt", recipe.strMeal)
-            div.setAttribute("onclick", "fnSaludar(\'" +recipe.idMeal+ "\', 'Search Bar')")
+            div.setAttribute("onclick", "fnGetRecipe(\'" +recipe.idMeal+ "\', 'Search Bar')")
             div.appendChild(img)
             div.appendChild(h5)
             div.setAttribute("id", recipe.idMeal)
@@ -47,18 +48,19 @@ function fnFilteredRecipes (){
 
 }
 
-function fnSaludar(area, method) {
+window.fnGetRecipe = function fnGetRecipe(area, method) {
     window.localStorage.setItem('method', method)
     window.localStorage.setItem('demo', area)
-    window.location = '/html/demo.html'
+    window.location = '/recipe.html'
 }
 
-function fnGetRandomRecipe() {
+window.fnGetRandomRecipe = function fnGetRandomRecipe() {
     getDataFromApi('https://www.themealdb.com/api/json/v1/1/random.php')
     .then(data => {
             window.localStorage.setItem('method', 'Random Recipe')
             window.localStorage.setItem('demo', data['meals'][0]['idMeal'])
-            window.location = '/html/demo.html'
+            window.location = '/recipe.html'
         })
 }
 fnFilteredRecipes()
+document.getElementById('logo').setAttribute('src',logo)
