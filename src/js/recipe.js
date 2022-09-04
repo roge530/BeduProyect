@@ -1,5 +1,10 @@
-import css from "../css/recipe.css";
-import logo from '../assets/icon.png'
+import '../css/demo.css'
+import rbLogo from '/src/assets/icon.png'
+
+//SETTING SRC ON IMAGES
+const logo = document.getElementById('rbLogo')
+logo.src = rbLogo
+
 const foodName= localStorage.getItem('demo')
 const baseURL='https://www.themealdb.com/api/json/v1/1/lookup.php?i='
 let recipeURL=baseURL+foodName
@@ -87,4 +92,3 @@ function dataFilter(dataArray, filter){
         return validation
     })
 }
-document.getElementById('logo').setAttribute('src',logo)
