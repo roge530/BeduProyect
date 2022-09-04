@@ -1,6 +1,3 @@
-document.getElementById('metodo').append(window.localStorage.getItem('method'))
-document.getElementById('mealID').append(window.localStorage.getItem('demo'))
-
 function fnSearch() {
     let recipe = (document.getElementById('myInput'))
     window.localStorage.setItem('demo', recipe.className)
@@ -8,9 +5,6 @@ function fnSearch() {
     window.location = '/html/demo.html'
 }
 
-
-document.getElementById('metodo').append(window.localStorage.getItem('method'))
-document.getElementById('mealID').append(window.localStorage.getItem('demo'))
 const foodName= localStorage.getItem('demo')
 const baseURL='https://www.themealdb.com/api/json/v1/1/lookup.php?i='
 let recipeURL=baseURL+foodName
@@ -28,9 +22,15 @@ window.addEventListener('DOMContentLoaded', (event) => {
     getDataFromApi(recipeURL)
     .then(
         retrievedValues=>{
+            const mealNameDOM= document.querySelector('#mealID')
+            const instructionsDOM= document.querySelector('#instructions')
+            const ingListDOM= document.querySelector("#ingredients")
+            const videoDOM=document.querySelector("#videoContainer")
+            
+
             const retrievedValuesArray= Object.entries(retrievedValues.meals[0]);
             const filteredArray=filterArray(retrievedValuesArray)
-            //console.log(filterArray(retrievedValuesArray))
+            console.log(filterArray(retrievedValuesArray))
             
             //Get meal name
             console.log(dataFilter(filteredArray,'strMeal')[0][1])
@@ -49,11 +49,21 @@ window.addEventListener('DOMContentLoaded', (event) => {
             //Get procedure
             console.log(dataFilter(filteredArray,'strInstruction')[0][1])
             const procedure1=dataFilter(filteredArray,'strInstruction')[0][1]
-            //DOM Render
 
-            const mealNameDOM= document.querySelector('#mealID')
-            const instructionsDOM= document.querySelector('#instructions')
-            const ingListDOM= document.querySelector("#ingredients")
+
+            //Get image
+            console.log(dataFilter(filteredArray,'strMealThumb')[0][1])
+            const recipeImg=dataFilter(filteredArray,'strMealThumb')[0][1]
+
+            //Get youtube video
+            const videoURL=dataFilter(filteredArray,'strYoutube')[0][1].replace("watch?v=","embed/")
+           
+            console.log(`${videoURL}?contorls=0`)
+            videoDOM.setAttribute("src",`${videoURL}?controls=0`)
+
+            //DOM Render
+            document.querySelector('#recipeImg').src=recipeImg
+            
 
             mealNameDOM.textContent=mealName;
             instructionsDOM.textContent=procedure1;
@@ -61,14 +71,18 @@ window.addEventListener('DOMContentLoaded', (event) => {
             ingredients.forEach(element => {
                 let node= document.createElement("p");
                 let textNode=document.createTextNode(element);
-                node.appendChild(textNode)
+                console.log('aqui funciona aun');
+                node.appendChild(textNode);
                 ingListDOM.appendChild(node);
-
-
+                // const icon=`<i class="fa fa-star" aria-hidden="true"><span>  ${element}</span> </i> <br>
+                // <br>` ;
+                // ingListDOM.insertAdjacentHTML('beforeend', icon);
+                //node.insertAdjacentHTML('afterend', '</i>');
             });
            // ingListDOM.textContent=ingListDOM;
         }
         )
+
 });
 
 
