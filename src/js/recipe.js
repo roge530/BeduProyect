@@ -1,4 +1,4 @@
-import '../css/demo.css'
+import '../css/recipe.css'
 import rbLogo from '/src/assets/icon.png'
 
 //SETTING SRC ON IMAGES

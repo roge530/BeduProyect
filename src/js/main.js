@@ -1,7 +1,7 @@
 import '../css/style.css'
 import rogePhoto from '/src/assets/IMG_3903.jpeg'
 import omarPhoto from '/src/assets/omarPhoto.jpg'
-import roxiPhoto from '/src/assets/roxiPhoto.png'
+import roxiPhoto from '/src/assets/Roxy.jpg'
 import ghLogo from '/src/assets/github-2.svg'
 
 
@@ -10,10 +10,10 @@ var allOpened = false
 var categories = []
 
 //SETTING SRC ON IMAGES
-const rogePic = document.getElementById('rogePhoto')
-const omarPic = document.getElementById('omarPhoto')
-const roxiPic= document.getElementById('roxiPhoto')
-const ghL = document.getElementById('ghIcon')
+const rogePic = document.getElementById('cardRoge')
+const omarPic = document.getElementById('cardOmar')
+const roxiPic= document.getElementById('cardRoxy')
+const ghL = document.getElementById('githubIcon')
 rogePic.src = rogePhoto
 omarPic.src = omarPhoto
 roxiPic.src = roxiPhoto

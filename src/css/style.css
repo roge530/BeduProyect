@@ -47,6 +47,7 @@ a{
     -o-background-size:contain;
     background-size:contain;
     background-position: 0 0;  
+    align-self: center;
 }
 
 .test2{

@@ -63,6 +63,14 @@ h1 {
     font-size: 1.5rem;
     font-family: 'Roboto Slab', serif;
 }
+
+#randomRecipe {
+    cursor: pointer;
+}
+
+#results div {
+    cursor: pointer;
+}
 @media screen and (min-width: 1201px) {
     #results {
         display: grid;

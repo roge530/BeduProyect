@@ -14,7 +14,7 @@ body{
 .item1 { grid-area: header; }
 .item2 { 
   grid-area: menu; 
-  background-image: url('/assets/mockup_pag2_01.jpg') ;
+  background-image: url('/src/assets/mockup_pag2_01.jpg');
   background-repeat: repeat-y;
   color: rgba(0,0,0,0);
 }
@@ -29,7 +29,7 @@ body{
 }
 .item7 {
   grid-area: space;
-  background-image: url('/assets/mockup_pag2_03.jpg') ;
+  background-image: url('/src/assets/mockup_pag2_03.jpg') ;
   background-repeat: repeat-y; 
   color: rgba(0,0,0,0);
 }
@@ -53,21 +53,7 @@ body{
   font-size: 1rem;
 }
 
-<<<<<<<< HEAD:src/css/recipe.css
 img{
-========
-.item2{
-    background-image: url('/src/assets/mockup_pag2_01.jpg') ;
-    background-repeat: repeat-y;  
-}
-
-.item7{
-    background-image: url('/src/assets/mockup_pag2_03.jpg') ;
-    background-repeat: repeat-y; 
-}
-
-#recipeImg{
->>>>>>>> f5ad9b298bf37b81c09a4833ac850e83eff078bd:src/css/demo.css
    border-radius: 50%;
     width: 50%;
     
@@ -135,22 +121,6 @@ iframe:focus {
     
 
   }
-<<<<<<<< HEAD:src/css/recipe.css
-.navbar {
-  height: 4%;
-}
 .navLogo {
-  width: 25px;
+  width: 50px;
 }
-========
-
-  .navLogo {
-    height: 50px;
-
-}
-
-.nav-item {
-    font-size: 1.5rem;
-    font-family: 'Roboto Slab', serif;
-}
->>>>>>>> f5ad9b298bf37b81c09a4833ac850e83eff078bd:src/css/demo.css
