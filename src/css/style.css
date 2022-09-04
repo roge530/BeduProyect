@@ -41,7 +41,7 @@ a{
 
 .test{
     height: 35rem;
-    background: url('/assets/web_image_01.jpg') no-repeat center center ;
+    background: url('/src/assets/web_image_01.jpg') no-repeat center center ;
     -webkit-background-size:contain;
     -moz-background-size:contain;
     -o-background-size:contain;

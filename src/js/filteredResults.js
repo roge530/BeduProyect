@@ -22,7 +22,7 @@ function getDataFromApi(urlApi) {
     }
     else {
         h1.textContent = ""
-        window.location = '/html/index.html'
+        window.location = '/src/html/index.html'
     }
     getDataFromApi(url + window.localStorage.getItem('demo'))
     .then(data => {
@@ -53,7 +53,7 @@ fnFilteredRecipes()
 function fnSaludar(area, method) {
     window.localStorage.setItem('method', method)
     window.localStorage.setItem('demo', area)
-    window.location = '/html/demo.html'
+    window.location = '/src/html/demo.html'
 }
 
 function fnGetRandomRecipe() {
@@ -61,6 +61,6 @@ function fnGetRandomRecipe() {
     .then(data => {
             window.localStorage.setItem('method', 'Random Recipe')
             window.localStorage.setItem('demo', data['meals'][0]['idMeal'])
-            window.location = '/html/demo.html'
+            window.location = '/src/html/demo.html'
         })
 }

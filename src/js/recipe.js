@@ -2,7 +2,7 @@ function fnSearch() {
     let recipe = (document.getElementById('myInput'))
     window.localStorage.setItem('demo', recipe.className)
     window.localStorage.setItem('method', 'Search Bar')
-    window.location = '/html/demo.html'
+    window.location = '/src/html/demo.html'
 }
 
 const foodName= localStorage.getItem('demo')

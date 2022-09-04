@@ -1,30 +1,41 @@
+//import css from "../css/style.css";
 var areas = []
 var allOpened = false
 var categories = []
 
-export function fnShowFilteredResults(area, method) {
+fnAllAreas() //GETTING ALL THE AREAS FROM THE API
+fnAllCategories() //GETTING ALL THE CATEGORIES FROM THE API
+fnAutocomplete(document.getElementById('myInput'))
+
+const randomRecipe = document.getElementById('randomRecipe').addEventListener("click", fnGetRandomRecipe)
+const allAreas = document.getElementById('allAreas').addEventListener("click", fnPrintAllAreas)
+const searchButton = document.getElementById('searchButton').addEventListener("click", fnSearch)
+
+ function fnShowFilteredResults(area, method) {
     window.localStorage.setItem('method', method)
     window.localStorage.setItem('demo', area)
-    window.location = '/html/filteredResults.html'
+    window.location = '/src/html/filteredResults.html'
 }
 
-export function getDataFromApi(urlApi) {
+ function getDataFromApi(urlApi) {
     return fetch(urlApi)
     .then(response => {
         return response.json();
     })
 }
 
-export function fnAllAreas() {
+ function fnAllAreas() {
     getDataFromApi('https://www.themealdb.com/api/json/v1/1/list.php?a=list')
         .then(data => {
             areas = data['meals'].map(datum => {
                 return datum['strArea']
             })
         })
+    
 }
 
-export function fnHideAreas() {
+
+ function fnHideAreas() {
     document.getElementById('allAreas').removeAttribute('hidden')
     areas.forEach(area => {
         document.getElementById(area).setAttribute('hidden', true)
@@ -33,16 +44,16 @@ export function fnHideAreas() {
 }
 
 
-export function fnPrintAllAreas() {
+ function fnPrintAllAreas() {
     if (!allOpened) {
         let fragment = new DocumentFragment()
-        areas = areas.filter(area => area != 'Mexican')
-        areas = areas.filter(area => area != 'Canadian')
         document.getElementById('allAreas').setAttribute('hidden', true)
         areas.forEach(area => {
             let div = document.createElement('div')
             div.setAttribute("id", area)
-            div.setAttribute("onclick", "fnShowFilteredResults(\'" +area+ "\', 'Area Filter')")
+            div.addEventListener("click", () => {
+                fnShowFilteredResults(area, 'Area Filter')
+            })
             div.innerHTML = '<p>'+area+'</p>'
             fragment.appendChild(div)
         })
@@ -51,7 +62,8 @@ export function fnPrintAllAreas() {
         divArea.appendChild(fragment)
         let button = document.createElement('button')
         button.setAttribute("id", "buttonHidde")
-        button.setAttribute("onclick", "fnHideAreas()")
+        // button.setAttribute("onclick", "fnHideAreas()")
+        button.addEventListener("click", fnHideAreas)
         button.innerHTML = 'Ocultar'
         let areasSection = document.querySelector('#areasSection')
         areasSection.appendChild(button)
@@ -65,7 +77,7 @@ export function fnPrintAllAreas() {
     }
 }
 
-export function fnAllCategories() {
+ function fnAllCategories() {
     getDataFromApi('https://www.themealdb.com/api/json/v1/1/list.php?c=list')
     .then(data => {
         categories = data['meals'].map(datum => {
@@ -75,14 +87,16 @@ export function fnAllCategories() {
     })
 }
 
-export function fnPrintAllCategories() {
+function fnPrintAllCategories() {
     let fragment = new DocumentFragment()
     categories.forEach(category => {
         let div = document.createElement('div')
         let divBody = document.createElement('div')
         div.setAttribute("id", category)
-        div.setAttribute('class', 'card')
-        div.setAttribute("onclick", "fnShowFilteredResults(\'" +category+ "\', 'Category Filter')")
+        div.setAttribute('class', 'card foodCategory')
+        div.addEventListener("click", () => {
+            fnShowFilteredResults(category, 'Category Filter')
+        })
         divBody.setAttribute('class', 'card-body')
         divBody.innerHTML = '<p class="card-text">'+category+'</p>'
         div.appendChild(divBody)
@@ -92,7 +106,9 @@ export function fnPrintAllCategories() {
     divCategories.appendChild(fragment)
 }
 
-export function fnAutocomplete(input) {
+
+
+ function fnAutocomplete(input) {
     let currentFocus
     input.addEventListener("input", e => {
         let div, divMatchingElement, i, val = input.value
@@ -174,18 +190,24 @@ export function fnAutocomplete(input) {
     });
 }
 
-export function fnSearch() {
+
+
+ function fnSearch() {
     let idMeal = window.localStorage.getItem('idMeal')
     window.localStorage.setItem('demo', idMeal)
     window.localStorage.setItem('method', 'Search Bar')
-    window.location = '/html/demo.html'
+    window.location = '/src/html/demo.html'
 }
 
-function fnGetRandomRecipe() {
+ export function fnGetRandomRecipe() {
     getDataFromApi('https://www.themealdb.com/api/json/v1/1/random.php')
     .then(data => {
             window.localStorage.setItem('method', 'Random Recipe')
             window.localStorage.setItem('demo', data['meals'][0]['idMeal'])
-            window.location = '/html/demo.html'
+            window.location = '/src/html/demo.html'
         })
+}
+
+ function fnSaludo() {
+    console.log('holamundo')
 }
