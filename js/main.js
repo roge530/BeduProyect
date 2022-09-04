@@ -1,5 +1,6 @@
 import css from "../css/style.css";
 import foto from '../assets/IMG_3903.jpeg'
+import fotoRoxy from '../assets/Roxy.jpg'
 import githubIcon from '../assets/github-2.svg'
 var areas = []
 var allOpened = false
@@ -201,3 +202,4 @@ fnAllAreas()
 fnAutocomplete(document.getElementById('myInput'))
 document.getElementById('cardRoge').setAttribute('src',foto)
 document.getElementById('githubIcon').setAttribute('src',githubIcon)
+document.getElementById('cardRoxy').setAttribute('src',fotoRoxy)
