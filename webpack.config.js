@@ -3,15 +3,12 @@ const path = require('path');
 
 module.exports = {
     entry: {
-        main: path.resolve(__dirname, './js/main.js'),
+      main: path.resolve(__dirname, './js/main.js'),
+      filteredResults: path.resolve(__dirname, './js/filteredResults')
     },
     output: {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'deploy')
-    },
-    devServer: {
-        contentBase: './deploy',
-        open: true
     },
     module: {
         rules: [
@@ -45,14 +42,18 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
+            hash: true,
             title: "Webpack Output",
             filename:'index.html',
-            template:'./html/index.html'
+            template: path.resolve(__dirname, './html/index.html'),
+            chunks: ['main'],
         }),
         new HtmlWebpackPlugin({
+            hash: true,
             title: "NFT",
             filename:'filteredResults.html',
-            template:'./html/filteredResults.html'
+            template:path.resolve(__dirname, './html/filteredResults.html'),
+            chunks: ['filteredResults'],
         }),
     ],
 };

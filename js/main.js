@@ -1,10 +1,11 @@
 import css from "../css/style.css";
 import foto from '../assets/IMG_3903.jpeg'
 import githubIcon from '../assets/github-2.svg'
-import filteredResults from './filteredResults.js'
 var areas = []
 var allOpened = false
 var categories = []
+var path = window.location.pathname;
+var page = path.split("/").pop();
 
 window.fnShowFilteredResults = function fnShowFilteredResults(area, method) {
     window.localStorage.setItem('method', method)
@@ -27,7 +28,7 @@ function fnAllAreas() {
             })
         })
 }
-fnAllAreas()
+
 
 window.fnHideAreas = function fnHideAreas() {
     document.getElementById('allAreas').removeAttribute('hidden')
@@ -36,7 +37,6 @@ window.fnHideAreas = function fnHideAreas() {
     });
     document.getElementById('buttonHidde').setAttribute('hidden', true)    
 }
-
 
 window.fnPrintAllAreas = function fnPrintAllAreas() {
     if (!allOpened) {
@@ -96,8 +96,6 @@ function fnPrintAllCategories() {
     let divCategories = document.querySelector('#categories')
     divCategories.appendChild(fragment)
 }
-
-fnAllCategories()
 
 function fnAutocomplete(input) {
     let currentFocus
@@ -181,7 +179,6 @@ function fnAutocomplete(input) {
     });
 }
 
-fnAutocomplete(document.getElementById('myInput'))
 
 window.fnSearch = function fnSearch() {
     let idMeal = window.localStorage.getItem('idMeal')
@@ -198,5 +195,9 @@ window.fnGetRandomRecipe = function fnGetRandomRecipe() {
             window.location = '/html/demo.html'
         })
 }
+
+fnAllCategories()
+fnAllAreas()
+fnAutocomplete(document.getElementById('myInput'))
 document.getElementById('cardRoge').setAttribute('src',foto)
 document.getElementById('githubIcon').setAttribute('src',githubIcon)

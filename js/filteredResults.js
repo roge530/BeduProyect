@@ -1,4 +1,7 @@
+import css from "../css/filteredResults.css";
 var recipes = []
+var path = window.location.pathname;
+var page = path.split("/").pop();
 
 function getDataFromApi(urlApi) {
     return fetch(urlApi)
@@ -44,8 +47,6 @@ function fnFilteredRecipes (){
 
 }
 
-fnFilteredRecipes()
-
 function fnSaludar(area, method) {
     window.localStorage.setItem('method', method)
     window.localStorage.setItem('demo', area)
@@ -60,3 +61,4 @@ function fnGetRandomRecipe() {
             window.location = '/html/demo.html'
         })
 }
+fnFilteredRecipes()
